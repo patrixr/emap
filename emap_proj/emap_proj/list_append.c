@@ -31,7 +31,7 @@ bool		List_prepend(List *l, void *data)
 {
   List_Iterator	*new_it;
 
-  new_it = malloc(sizeof(*new_it));
+  new_it = (List_Iterator*)malloc(sizeof(*new_it));
   if (!new_it)
     return false;
 
@@ -42,6 +42,8 @@ bool		List_prepend(List *l, void *data)
   l->first->prev = new_it;
 
   l->first = new_it;
+  l->count++;
 
   return true;
 }
+

@@ -56,27 +56,50 @@ typedef struct List List;
 #define FIRST(l) l->first
 #define LAST(l) l->last
 
+//-------------------------------------------------
+// API
+//-------------------------------------------------
 
-// construction.c
-
+//------
+// CONSTRUCTION.c
+//------
 List		*List_new();
 /*< Creates a new empty list. Can be used throught the NEW macro
   e.g List *l = NEW(List); */
-
-
-// destruction.c
-
 void		List_delete(List *l);
 /*< Frees the list. Does not free the contained data */
 
-// append.c
 
+//------
+// APPEND.c
+//------
 bool		List_append(List *l, void *data);
 /*< Appends data to the list */
+bool		List_prepend(List *l, void *data);
+/*< Inserts an element at the beginning of the list */
 
-// foreach.c
-
+//------
+// FOREACH.c
+//------
 void		List_foreach(List *l, list_cb cb);
 /*< Loops through all the nodes and calls */
+
+//------
+// REMOVE.c
+//------
+void		*List_remove_it(List *l, List_Iterator *it);
+/*< Removes the item from the list */
+bool		List_remove(List *l, list_predicate fct, void *param);
+/*< Removes every item that fill the predicate */
+
+//------
+// GET.c
+//------
+void		*List_get(List *l, int idx);
+/*< Returns the element at a precise index */
+void		*List_get_first(List *l, list_predicate fct, void * param);
+/*< Returns the first element that matches the predicate */
+List		*List_get_all(List *l, list_predicate fct, void *param);
+/*< Returns a list of all the elements that match the predicate */
 
 #endif // __C_LIST_H__

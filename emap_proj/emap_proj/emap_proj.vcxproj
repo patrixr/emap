@@ -77,6 +77,7 @@
     <ClCompile Include="list_append.c" />
     <ClCompile Include="list_construction.c" />
     <ClCompile Include="list_foreach.c" />
+    <ClCompile Include="list_get.c" />
     <ClCompile Include="list_remove.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>

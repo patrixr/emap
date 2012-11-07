@@ -30,6 +30,9 @@
     <ClCompile Include="list_remove.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="list_get.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="emap.h">
