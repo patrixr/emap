@@ -18,12 +18,27 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="list_construction.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="list_append.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="list_foreach.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="list_remove.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="emap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

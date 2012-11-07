@@ -74,10 +74,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="list_append.c" />
+    <ClCompile Include="list_construction.c" />
+    <ClCompile Include="list_foreach.c" />
+    <ClCompile Include="list_remove.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="emap.h" />
+    <ClInclude Include="list.h" />
     <ClInclude Include="parser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
