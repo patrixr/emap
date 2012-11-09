@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <windows.h>
 
+#include "bit_operations.h"
 #include "list.h"
 #include "emap.h"
 #include "parser.h"
@@ -32,7 +33,17 @@ int		int_cmp(void *data, void *data2)
 
 int		main()
 {
-	List *list = NEW(List);
+	uint8_t a = 182;
+
+	printf("byte : %u\n", a);
+
+	//a = a << 1;
+	//a = a >> 1;
+
+	printf("crossings : %u\n", get_crossings(a));
+	printf("if class : %u\n", get_if_class(a));
+
+	/*List *list = NEW(List);
 	List *out1 = NULL;
 	List *out2 = NULL;
 
@@ -75,12 +86,12 @@ int		main()
 
 	printf("------   RE-MERGE --------\n");
 	printf("AAA\n");
-	List_merge(out1, out2, list);
+	List_concat(out1, out2, list);
 	printf("AAA %p\n", list);
 	List_foreach(list, &print_data);
 	printf("COUNT : %i\n", COUNT(list));
 
-
+	*/
 	/*
 		printf("------prepended 42--------\n");
 

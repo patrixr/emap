@@ -1,27 +1,6 @@
 #include <assert.h>
 #include "list.h"
 
-static List_Iterator		*List_pop_first_it(List *l)
-{
-	List_Iterator *it = FIRST(l);
-
-	if (!COUNT(l))
-		return NULL;
-
-	if (l->count == 1)
-	{
-		l->first = NULL;
-		l->last = NULL;
-	}
-	else
-	{
-		l->first = it->next;
-		it->next->prev = NULL;
-	}
-	l->count--;
-	return it;
-}
-
 void		List_cut_half(List *in, List **out1, List **out2)
 {
 	int		i = 0, total = COUNT(in);
@@ -64,7 +43,7 @@ void		List_cut_half(List *in, List **out1, List **out2)
 	}
 }
 
-void		List_merge(List *l1, List*l2, List *res)
+void		List_concat(List *l1, List*l2, List *res)
 {
 	List_Iterator *it_tmp;
 

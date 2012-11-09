@@ -74,17 +74,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bit_operations.c" />
     <ClCompile Include="list_append.c" />
     <ClCompile Include="list_construction.c" />
     <ClCompile Include="list_cut.c" />
     <ClCompile Include="list_foreach.c" />
     <ClCompile Include="list_get.c" />
     <ClCompile Include="list_insert.c" />
+    <ClCompile Include="list_pop.c" />
     <ClCompile Include="list_remove.c" />
     <ClCompile Include="list_sort.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="quick_sort.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bit_operations.h" />
     <ClInclude Include="emap.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="parser.h" />

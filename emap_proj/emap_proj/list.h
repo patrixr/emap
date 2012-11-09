@@ -80,13 +80,17 @@ bool		List_append(List *l, void *data);
 bool		List_prepend(List *l, void *data);
 /*< Inserts an element at the beginning of the list */
 bool		List_append_it(List *l, List_Iterator * new_it);
+/*< Adds an already created iterator to the list, this iterator must not
+	belong to another list */
 bool		List_prepend_it(List *l, List_Iterator * new_it);
+/*< Prepends an already created iterator to the list, this iterator must not
+	belong to another list */
 
 //------
 // FOREACH.c
 //------
 void		List_foreach(List *l, list_cb cb);
-/*< Loops through all the nodes and calls */
+/*< Loops through all the nodes and calls the callback function */
 
 //------
 // REMOVE.c
@@ -94,7 +98,7 @@ void		List_foreach(List *l, list_cb cb);
 void		*List_remove_it(List *l, List_Iterator *it);
 /*< Removes the item from the list */
 bool		List_remove(List *l, list_predicate fct, void *param);
-/*< Removes every item that fill the predicate */
+/*< Removes every item that fills the predicate */
 
 //------
 // GET.c
@@ -113,12 +117,21 @@ List		*List_get_all(List *l, list_predicate fct, void *param);
 void		List_sort(List *l, list_cmp_fct cmpf);
 /*< Simple built-in bubble sort */
 void		List_merge_sort(List *l, list_cmp_fct cmpf);
+/*< Merge sort */
 
 //------
 // CUT.c
 //------
 
 void		List_cut_half(List *in, List **out1, List **out2);
-void		List_merge(List *l1, List*l2, List *out);
+/*< Divides the list in 2 */
+void		List_concat(List *l1, List*l2, List *out);
+/*< Concatenates the 2 lists into one */
+
+//------
+// POP.c
+//------
+
+List_Iterator		*List_pop_first_it(List *l);
 
 #endif // __C_LIST_H__

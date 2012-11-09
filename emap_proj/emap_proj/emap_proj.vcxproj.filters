@@ -42,6 +42,15 @@
     <ClCompile Include="list_cut.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="list_pop.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="quick_sort.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bit_operations.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="emap.h">
@@ -51,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bit_operations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
