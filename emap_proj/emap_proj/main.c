@@ -31,10 +31,70 @@ int		int_cmp(void *data, void *data2)
 	return 0;
 }
 
-int		main()
+int		main(int argc, char **argv)
 {
+	road_t	road;
+	parse_status_t	st;
+	error_report_t	*err;
+	emap_file_t *file = parse_open_file(argv[1]);
+	if (!file) {
+		printf("Unable to open file\n");
+		return EXIT_FAILURE;
+	}
+	st = parse_get_next_road(file, &road);
+	while (st == P_OK)
+	{
+		printf("P_OK\n");
+		printf("Crossings %u\n", road.crossings);
+		printf("If Class %u\n", road.if_class);
+		printf("Name Length : %u\n", road.length);
+		printf("Link id %u\n", road.link_id);
+		st = parse_get_next_road(file, &road);
+		if (st != P_OK) printf("NOT OK\n");
+		printf("\n========================\n");
+	}
+	if (st != P_COMPLETE)
+		printf("%s\n", file->last_error.err_message);
+	
+	/*FILE *f = NULL;
+	uint16_t	length = 0;
+	uint32_t linkid = 0;
+	uint16_t name_len = 0;
 	uint8_t a = 182;
 
+
+	f = fopen(argv[1], "rb");
+	if (!f)
+		printf("could not open file\n");
+	else {
+		fread(&length, 2, 1, f);
+		//length = length >> 8;
+		//fread(&length, 1, 1, f);
+		printf("Length == %u\n", length);
+		printf("Length (swapped) == %u\n", ENDIAN_SWAP16(length));
+		fread(&linkid, 4, 1, f);
+		printf("Link id == %u\n", linkid);
+		printf("Link id (swapped) == %u\n", ENDIAN_SWAP32(linkid));
+		
+		fread(&name_len, 2, 1, f);
+		printf("name length = %u\n", name_len);
+		printf("name length (swapped) = %u\n", ENDIAN_SWAP16(name_len));
+
+		fread(&linkid, 4, 1, f);
+		printf("last 4 bytes == %u\n", linkid);
+		printf("last 4 bytes (swapped) == %u\n", ENDIAN_SWAP32(linkid));
+
+		fread(&length, 2, 1, f);
+		//length = length >> 8;
+		//fread(&length, 1, 1, f);
+		printf("\n\n\nLength == %u\n", length);
+		printf("Length (swapped) == %u\n", ENDIAN_SWAP16(length));
+		
+
+	}
+
+	
+	printf("%s\n", argv[1]);
 	printf("byte : %u\n", a);
 
 	//a = a << 1;
@@ -43,6 +103,7 @@ int		main()
 	printf("crossings : %u\n", get_crossings(a));
 	printf("if class : %u\n", get_if_class(a));
 
+	*/
 	/*List *list = NEW(List);
 	List *out1 = NULL;
 	List *out2 = NULL;

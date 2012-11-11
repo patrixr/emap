@@ -51,6 +51,9 @@
     <ClCompile Include="bit_operations.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="parser.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="emap.h">

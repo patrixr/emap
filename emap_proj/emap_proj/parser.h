@@ -10,6 +10,7 @@
 */
 typedef enum parse_status_e
 {
+P_CORRUPT, // Bad info
 P_READ_ERROR, // unable to read the file
 P_MISSING_DATA, //Byte count is under 12
 P_INCOMPLETE_FILE, // early EOF
@@ -21,13 +22,13 @@ P_OK // Normal state (currently reading)
 typedef struct error_report_s
 {
 	parse_status_t 	err_type;
-	char *			err_message;
+	const char *	err_message;
 } error_report_t;
 
 typedef struct emap_file_s
 {
 	FILE *stream;
-	error_report_t *last_error; // Null if no error occured
+	error_report_t last_error; // Null if no error occured
 } emap_file_t;
 
 //----------------------------------------------------------

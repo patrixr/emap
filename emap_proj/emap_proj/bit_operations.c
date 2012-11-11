@@ -15,3 +15,8 @@ uint8_t		get_if_class(uint8_t byte)
 	byte = byte << 4;
 	return byte >> 4;
 }
+
+uint8_t		get_name_flag(uint8_t byte)
+{
+	return byte >> 7;
+}
