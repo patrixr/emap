@@ -54,6 +54,15 @@
     <ClCompile Include="parser.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cmp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="misc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="insertion_sort.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="emap.h">

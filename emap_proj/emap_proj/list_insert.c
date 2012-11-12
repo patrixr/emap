@@ -60,3 +60,34 @@ bool		List_insert_it(List *l, List_Iterator * new_node, int idx)
 	}
 	return true;
 }
+
+bool		List_insert_after_it(List *l, List_Iterator * it, void *data)
+{
+	List_Iterator *new_node = (List_Iterator*)malloc(sizeof(*new_node));
+
+	if (!new_node)
+	{
+		perror("malloc");
+		return false;
+	}
+
+	if (!it || !l)
+	{
+		free(new_node);
+		return false;
+	}
+
+	new_node->prev = it;
+	new_node->next = it->next;
+	new_node->data = data;
+
+	if (it != LAST(l))
+		it->next->prev = new_node;
+	else
+		l->last = new_node;
+	it->next = new_node;
+
+	l->count++;
+
+	return true;
+}

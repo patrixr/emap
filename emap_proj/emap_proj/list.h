@@ -62,6 +62,8 @@ typedef struct List List;
 // API
 //-------------------------------------------------
 
+bool		List_insert_after_it(List *l, List_Iterator * it, void *data);
+
 //------
 // CONSTRUCTION.c
 //------
@@ -118,6 +120,7 @@ void		List_sort(List *l, list_cmp_fct cmpf);
 /*< Simple built-in bubble sort */
 void		List_merge_sort(List *l, list_cmp_fct cmpf);
 /*< Merge sort */
+void		List_insertion_sort(List *l, list_cmp_fct cmpf);
 
 //------
 // CUT.c

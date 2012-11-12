@@ -31,5 +31,15 @@ typedef struct road_s
 	uint8_t		crossings; // The 4 first bits will always be equal to 0
 } road_t;
 
+// COMPARISON FUNCTIONS
+// Those functions are used when sorting the road list
+int			cmp_link_id(void *data1, void *data2);
+int			cmp_if_class(void *data1, void *data2);
+int			cmp_crossings(void *data1, void *data2);
+int			cmp_name(void *data1, void *data2);
+
+// MISC FUNCTIONS
+void		road_print(void *data);
+
 
 #endif // _EMAP_H_
