@@ -89,9 +89,12 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="misc.c" />
     <ClCompile Include="parser.c" />
+    <ClCompile Include="process.c" />
     <ClCompile Include="quick_sort.c" />
+    <ClCompile Include="user_interface.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="application.h" />
     <ClInclude Include="bit_operations.h" />
     <ClInclude Include="emap.h" />
     <ClInclude Include="list.h" />

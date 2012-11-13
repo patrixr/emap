@@ -121,6 +121,7 @@ void		List_sort(List *l, list_cmp_fct cmpf);
 void		List_merge_sort(List *l, list_cmp_fct cmpf);
 /*< Merge sort */
 void		List_insertion_sort(List *l, list_cmp_fct cmpf);
+void		List_quick_sort(List *l, list_cmp_fct cmpf);
 
 //------
 // CUT.c

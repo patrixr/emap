@@ -9,6 +9,9 @@
 emap_file_t		*parse_open_file(const char *filename)
 {
 	emap_file_t	*f = (emap_file_t*)malloc(sizeof(*f));
+	
+	printf("== Opening file...\n");
+	
 	if (!f)
 		return NULL;
 	

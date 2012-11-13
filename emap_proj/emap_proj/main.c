@@ -31,7 +31,7 @@ int		main(int argc, char **argv)
 		return EXIT_FAILURE;
 	}
 	st = parse_get_next_road(file, road);
-	while (st == P_OK)
+	while (c++ < 100 && st == P_OK)
 	{
 		st = parse_get_next_road(file, road);
 		if (st == P_OK)
@@ -50,10 +50,12 @@ int		main(int argc, char **argv)
 	if (st != P_COMPLETE)
 		printf("%s\n", file->last_error.err_message);
 
+	parse_close_file(file);
+
 	printf("List has %i elements\n", COUNT(list));
 	List_foreach(list, &road_print);
 	printf("SORT\n");
-	List_insertion_sort(list, &cmp_link_id);
+	List_quick_sort(list, &cmp_link_id);
 	List_foreach(list, &road_print);
 
 	printf("FREEING ALL\n");

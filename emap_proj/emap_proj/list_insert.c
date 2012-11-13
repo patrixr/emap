@@ -63,7 +63,9 @@ bool		List_insert_it(List *l, List_Iterator * new_node, int idx)
 
 bool		List_insert_after_it(List *l, List_Iterator * it, void *data)
 {
-	List_Iterator *new_node = (List_Iterator*)malloc(sizeof(*new_node));
+	List_Iterator *new_node = NULL;
+	
+	new_node = (List_Iterator*)malloc(sizeof(*new_node));
 
 	if (!new_node)
 	{
