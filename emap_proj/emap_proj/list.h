@@ -35,6 +35,7 @@ typedef struct List_Iterator List_Iterator;
 // foreach callback
 
 typedef void (*list_cb)(void *data);
+typedef void (*list_cb_param)(void *data, void *param);
 typedef bool (*list_predicate)(void *data, void *param);
 typedef int (*list_cmp_fct)(void *data1, void *data2);
 /*< A cmp function returns -1 if data1 > data2, 0 is data1 == data2 and 1 if data1 < data2 */
@@ -93,6 +94,7 @@ bool		List_prepend_it(List *l, List_Iterator * new_it);
 //------
 void		List_foreach(List *l, list_cb cb);
 /*< Loops through all the nodes and calls the callback function */
+void		List_foreach_param(List *l, list_cb_param cb, void *param);
 
 //------
 // REMOVE.c
