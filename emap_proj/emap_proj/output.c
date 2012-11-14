@@ -10,21 +10,19 @@ static void		write_in_dat_file(void* data, void *param)
 	road_t	*road = (road_t*)data;
 	uint16_t	datalen;
 	uint32_t	linkid = ENDIAN_SWAP32(road->link_id);
-	uint16_t	len = (road->name ? ENDIAN_SWAP16(road->length) : 0);
+	uint16_t	len;
 	uint32_t	last_bytes = 0;
 
-	datalen = (road->name ? road->length : 0) + 12;
+	datalen = (road->name ? road->length + 2: 0) + 12;
+	len = (road->name ? ENDIAN_SWAP16(datalen - 12) : 0);
 
 	datalen = ENDIAN_SWAP16(datalen);
-	
-
-		printf("a : %i\n", a++	);
 
 	
 	fwrite(&datalen, sizeof(datalen), 1, file);
 	fwrite(&linkid, sizeof(linkid), 1, file);
 	fwrite(&len, sizeof(len), 1, file);
-	
+
 	if (ENDIAN_SWAP16(datalen) > 12)
 	{
 		last_bytes = 1;
@@ -36,6 +34,8 @@ static void		write_in_dat_file(void* data, void *param)
 	last_bytes = ENDIAN_SWAP32(last_bytes);
 
 	fwrite(&last_bytes, sizeof(last_bytes), 1, file);
+	if (road->name && road->length)
+		fwrite(road->name, road->length + 2, 1, file);
 }	
 
 int			save_to_file(List *l, const char *filename)

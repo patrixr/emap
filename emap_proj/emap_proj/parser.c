@@ -106,7 +106,6 @@ parse_status_t	parse_get_next_road(emap_file_t *file, road_t *road_out)
 #endif	
 	if ((has_name && data_len == 12) ||
 		(!has_name && data_len > 12)) {
-		printf("data_len %u at %i th\n", data_len);
 		RETURN_PARSE_ERROR(file, P_CORRUPT, "Corrupt File : Data length and Flag name conflict\n", lol);
 	}
 	if (data_len == 12)
