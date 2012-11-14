@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "list.h"
+#include "speed.h"
 
 void		List_insertion_sort(List *l, list_cmp_fct cmpf)
 {
@@ -8,6 +9,9 @@ void		List_insertion_sort(List *l, list_cmp_fct cmpf)
 	List_Iterator *current = NULL;
 	List_Iterator *next = NULL;
 	int len = COUNT(l);
+
+	INIT_SPEED_RECORD
+	BEGIN_SPEED_RECORD
 
 	if (len <= 1 || !it)
 		return ;
@@ -39,4 +43,5 @@ void		List_insertion_sort(List *l, list_cmp_fct cmpf)
 		}
 		it = next;
 	}
+	STOP_SPEED_RECORD
 }

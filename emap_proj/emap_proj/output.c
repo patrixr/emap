@@ -2,8 +2,10 @@
 #include "application.h"
 #include "bit_operations.h"
 
-void		write_in_dat_file(void* data, void *param)
+static void		write_in_dat_file(void* data, void *param)
 {
+	static int a= 0;
+
 	FILE *file = (FILE*)param;
 	road_t	*road = (road_t*)data;
 	uint16_t	datalen;
@@ -11,14 +13,19 @@ void		write_in_dat_file(void* data, void *param)
 	uint16_t	len = (road->name ? ENDIAN_SWAP16(road->length) : 0);
 	uint32_t	last_bytes = 0;
 
-	datalen = road->length + 12;
+	datalen = (road->name ? road->length : 0) + 12;
 
 	datalen = ENDIAN_SWAP16(datalen);
+	
+
+		printf("a : %i\n", a++	);
+
+	
 	fwrite(&datalen, sizeof(datalen), 1, file);
 	fwrite(&linkid, sizeof(linkid), 1, file);
 	fwrite(&len, sizeof(len), 1, file);
 	
-	if (road->length)
+	if (ENDIAN_SWAP16(datalen) > 12)
 	{
 		last_bytes = 1;
 		last_bytes = last_bytes << 3;

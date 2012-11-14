@@ -15,5 +15,7 @@ typedef struct application_s
 	List			*road_list;
 } application_t;
 
+// process.c
+int		load_list_from_file(application_t *app);
 
 #endif // APPLICATION

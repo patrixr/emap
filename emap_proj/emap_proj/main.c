@@ -6,10 +6,12 @@
 #include "list.h"
 #include "emap.h"
 #include "parser.h"
+#include "user_interface.h"
 
 int		main(int argc, char **argv)
 {
-	road_t	*road;
+	run(argc, argv);
+	/*road_t	*road;
 	List *list = NEW(List);
 	int c = 0;
 	parse_status_t	st;
@@ -63,6 +65,6 @@ int		main(int argc, char **argv)
 	{
 		free(list->first->data);
 		List_remove_it(list, FIRST(list));
-	}
+	}*/
 	return EXIT_SUCCESS;
 }

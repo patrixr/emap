@@ -2,7 +2,7 @@
 #define _EMAP_H_
 
 #include <stdint.h>
-
+#include "list.h"
 
 //-----------------------------------------------------
 // DATA STRUCTURE
@@ -37,6 +37,14 @@ int			cmp_link_id(void *data1, void *data2);
 int			cmp_if_class(void *data1, void *data2);
 int			cmp_crossings(void *data1, void *data2);
 int			cmp_name(void *data1, void *data2);
+
+// SEARCH FUNCTIONS
+bool search_name(void *data, void *param);
+bool search_link_id(void *data, void *param);
+bool search_if_class(void *data, void *param);
+bool search_crossings(void *data, void *param);
+void		process_results(List *l);
+void		log_resutls(List *l, const char *filename);
 
 // MISC FUNCTIONS
 void		road_print(void *data);

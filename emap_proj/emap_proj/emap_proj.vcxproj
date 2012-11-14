@@ -86,12 +86,17 @@
     <ClCompile Include="list_pop.c" />
     <ClCompile Include="list_remove.c" />
     <ClCompile Include="list_sort.c" />
+    <ClCompile Include="log.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="misc.c" />
+    <ClCompile Include="output.c" />
     <ClCompile Include="parser.c" />
     <ClCompile Include="process.c" />
     <ClCompile Include="quick_sort.c" />
+    <ClCompile Include="search_fct.c" />
     <ClCompile Include="user_interface.c" />
+    <ClCompile Include="user_search.c" />
+    <ClCompile Include="user_sort.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="application.h" />
@@ -99,6 +104,8 @@
     <ClInclude Include="emap.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="parser.h" />
+    <ClInclude Include="speed.h" />
+    <ClInclude Include="user_interface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

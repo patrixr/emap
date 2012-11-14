@@ -2,6 +2,8 @@
 #include "parser.h"
 #include "bit_operations.h"
 
+#undef _DEBUG
+
 #define RETURN_PARSE_ERROR(f, status, msg)											\
 			f->last_error.err_message = msg; f->last_error.err_type = status;		\
 			return status;
@@ -104,7 +106,8 @@ parse_status_t	parse_get_next_road(emap_file_t *file, road_t *road_out)
 #endif	
 	if ((has_name && data_len == 12) ||
 		(!has_name && data_len > 12)) {
-		RETURN_PARSE_ERROR(file, P_CORRUPT, "Corrupt File : Data length and Flag name conflict\n");
+		printf("data_len %u at %i th\n", data_len);
+		RETURN_PARSE_ERROR(file, P_CORRUPT, "Corrupt File : Data length and Flag name conflict\n", lol);
 	}
 	if (data_len == 12)
 	{

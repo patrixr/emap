@@ -48,4 +48,6 @@ parse_status_t	parse_get_next_road(emap_file_t *file, road_t *road_out);
 void			parse_close_file(emap_file_t *file);
 /*< Closes the file and frees the file structure */
 
+int			save_to_file(List *l, const char *filename);
+
 #endif // _PARSER_H_
