@@ -32,5 +32,18 @@ static void	List_it_delete(List_Iterator *it)
 
 void		List_delete(List *l)
 {
-  List_it_delete(FIRST(l));
+	List_Iterator *it;
+	List_Iterator *next;
+
+	if (!l)
+		return;
+
+	it = FIRST(l);
+	while (it)
+	{
+		next = NEXT(it);
+		free(it);
+		it = next;
+	}
+	free(l);
 }

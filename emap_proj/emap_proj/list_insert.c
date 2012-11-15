@@ -1,3 +1,4 @@
+#include <assert.h>
 #include "list.h"
 
 bool		List_insert(List *l, void * data, int idx)
@@ -65,17 +66,16 @@ bool		List_insert_after_it(List *l, List_Iterator * it, void *data)
 {
 	List_Iterator *new_node = NULL;
 	
-	new_node = (List_Iterator*)malloc(sizeof(*new_node));
+	if (!it || !l)
+	{
+		return false;
+	}
+
+	new_node = (List_Iterator*)malloc(sizeof(List_Iterator));
 
 	if (!new_node)
 	{
 		perror("malloc");
-		return false;
-	}
-
-	if (!it || !l)
-	{
-		free(new_node);
 		return false;
 	}
 

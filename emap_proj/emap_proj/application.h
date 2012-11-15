@@ -1,6 +1,7 @@
 #ifndef _APPLICATION_H_
 #define _APPLICATION_H_
 
+#include <direct.h>
 #include "list.h"
 #include "parser.h"
 #include "emap.h"
@@ -11,6 +12,7 @@
 **/
 typedef struct application_s
 {
+	char			*directory;
 	emap_file_t		*file;
 	List			*road_list;
 } application_t;

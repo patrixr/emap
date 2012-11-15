@@ -17,6 +17,8 @@
 void		run(int argc, char **argv);
 void		sorting_method(application_t *app);
 void		search_method(application_t *app);
+char		get_entry(char min, char max);
+int			user_decide(const char *question);
 
 typedef struct search_interval_s
 {

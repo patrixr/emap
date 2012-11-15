@@ -43,30 +43,31 @@ void		List_cut_half(List *in, List **out1, List **out2)
 	}
 }
 
-void		List_concat(List *l1, List*l2, List *res)
+List		*List_concat(List *l1, List*l2)
 {
 	List_Iterator *it_tmp;
 
-	if (!res || !l1 || !l2)
+	if (!l1)
 		return NULL;
+	if (!l2 || !COUNT(l2))
+	{
+		free(l2);
+		return l1;
+	}
 
-	res->count = 0;
-	res->first = NULL;
-	res->last = NULL;
-	
-	while (COUNT(l1))
+	if (!COUNT(l1))
 	{
-		it_tmp = List_pop_first_it(l1);
-		assert(it_tmp);
-		List_append_it(res, it_tmp);
+		while (COUNT(l2))
+		{
+			it_tmp = List_pop_first_it(l2);
+			List_append_it(l1, it_tmp);
+		}
 	}
-	while (COUNT(l2))
-	{
-		it_tmp = List_pop_first_it(l2);
-		assert(it_tmp);
-		List_append_it(res, it_tmp);
+	else {
+		l1->last->next = l2->first;
+		l1->count += l2->count;
 	}
-	
-	free(l1);
+
 	free(l2);
+	return l1;
 }

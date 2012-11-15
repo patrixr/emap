@@ -16,6 +16,22 @@ void		*List_get(List *l, int idx)
 	return NULL;
 }
 
+List_Iterator		*List_get_it(List *l, int idx)
+{
+	List_Iterator *it = FIRST(l);
+
+	if (COUNT(l) < idx)
+		return NULL;
+
+	while (idx && it) {
+		--idx;
+		INC_IT(it);
+	}
+	if (it && !idx)
+		return it;
+	return NULL;
+}
+
 void		*List_get_first(List *l, list_predicate fct, void * param)
 {
 	List_Iterator *it = FIRST(l);

@@ -7,7 +7,7 @@ bool search_name(void *data, void *param)
 	char	*name = (char*)param;
 	road_t	*road = (road_t*)data;
 
-	if (!road || !road->length || !param)
+	if (!road || !road->length || !road->name || !param)
 		return false;
 
 	if (strstr(road->name, name))
@@ -58,19 +58,20 @@ void	process_results(List *l)
 {
 	List_Iterator *it = NULL;
 	int	count = 0;
+	char *wd = _getcwd(NULL, 0);
 
-	if (!l || !COUNT(l))
+	if (!l || !COUNT(l)) {
+		printf("<Empty result set>\n");
 		return;
+	}
 	it = FIRST(l);
 	printf("Results : {%u entries}\n", COUNT(l));
-	while (it && count++ < 11)
+	if (COUNT(l) <= 10)
+		List_foreach(l, &road_print);
+	else
 	{
-		road_print(it->data);
-		INC_IT(it);
-	}
-	if (count > 10)
-	{
-		printf("... \nLarge result set, logging in results.log\n");
+		printf("\nLarge result set, logging in %s\\results.log\n",
+			(wd ? wd : ""));
 		log_resutls(l, "./results.log");
 	}
 }

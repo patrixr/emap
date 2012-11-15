@@ -2,10 +2,12 @@
 
 void		*List_remove_it(List *l, List_Iterator *it)
 {
-	void *tmp = it->data;
+	void *tmp;
 
 	if (!l || !l->count || !it)
 		return NULL;
+
+	tmp = it->data;
 
 	if (l->count == 1)
 	{
@@ -38,12 +40,16 @@ bool		List_remove(List *l, list_predicate fct, void *param)
 	List_Iterator *tmp = NULL;
 
 	if (!it)
-		return;
+		return false;
 	while (it)
 	{
 		tmp = NEXT(it);
 		if (fct(it->data, param))
+		{
 			List_remove_it(l, it);
+			return true;
+		}
 		it = tmp;
     }
+	return false;
 }

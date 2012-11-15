@@ -107,6 +107,7 @@ bool		List_remove(List *l, list_predicate fct, void *param);
 //------
 // GET.c
 //------
+List_Iterator		*List_get_it(List *l, int idx);
 void		*List_get(List *l, int idx);
 /*< Returns the element at a precise index */
 void		*List_get_first(List *l, list_predicate fct, void * param);
@@ -131,7 +132,7 @@ void		List_quick_sort(List *l, list_cmp_fct cmpf);
 
 void		List_cut_half(List *in, List **out1, List **out2);
 /*< Divides the list in 2 */
-void		List_concat(List *l1, List*l2, List *out);
+List		*List_concat(List *l1, List*l2);
 /*< Concatenates the 2 lists into one */
 
 //------

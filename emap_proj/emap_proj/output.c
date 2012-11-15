@@ -4,8 +4,6 @@
 
 static void		write_in_dat_file(void* data, void *param)
 {
-	static int a= 0;
-
 	FILE *file = (FILE*)param;
 	road_t	*road = (road_t*)data;
 	uint16_t	datalen;
@@ -47,8 +45,8 @@ int			save_to_file(List *l, const char *filename)
 		perror("fopen");
 		return -1;
 	}
-
-	List_foreach_param(l, &write_in_dat_file, file);
+	if (l)
+		List_foreach_param(l, &write_in_dat_file, file);
 	fclose(file);
 	return 0;
 }

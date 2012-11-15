@@ -48,6 +48,18 @@ int			cmp_crossings(void *data1, void *data2)
 	return 0;
 }
 
+static int	my_strcasecmp(char *s1, char *s2)
+{
+	while (tolower(*s1) == tolower(*s2))
+    {
+      if (*s1 == '\0' || *s2 == '\0')
+		break;
+      s1++;
+      s2++;
+    }
+  return tolower(*(unsigned char *) s1) - tolower(*(unsigned char *) s2);
+}
+
 int			cmp_name(void *data1, void *data2)
 {
 	road_t *r1 = ROAD(data1);
@@ -63,7 +75,7 @@ int			cmp_name(void *data1, void *data2)
 		return 1;
 	if (r1->name && !r2->name)
 		return -1;
-	res = -1 * strcmp(r1->name, r1->name);
+	res = -1 * my_strcasecmp(r1->name, r2->name);
 	if (res > 0)
 		return 1;
 	if (res < 0)
